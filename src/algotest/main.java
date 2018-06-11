@@ -53,7 +53,7 @@ class lecturealgo{
 
 
         //System.out.println(lecs.size());
-        for (int num=0;num<5;num++) {
+        for (int num=0;num<5;num++) {//how
             double cohesion=0.0;
             total_leccredit=0;
             Collections.shuffle(lecs);
