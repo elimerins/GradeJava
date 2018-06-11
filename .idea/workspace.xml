@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58da58f2-6ee5-48da-8b8c-12cd6e994439" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/algotest/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algotest/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +22,7 @@
       <file leaf-file-name="lecture.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
+            <state relative-caret-position="608">
               <caret line="32" selection-start-line="4" selection-start-column="4" selection-end-line="32" />
               <folding>
                 <element signature="e#282#283#0" expanded="true" />
@@ -37,19 +37,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="181">
               <caret line="432" column="52" selection-start-line="432" selection-start-column="50" selection-end-line="432" selection-end-column="52" />
-              <folding>
-                <element signature="e#179#188#0" expanded="true" />
-                <element signature="e#259#279#0" expanded="true" />
-                <element signature="e#403#412#0" expanded="true" />
-                <element signature="e#483#500#0" expanded="true" />
-                <element signature="e#635#652#0" expanded="true" />
-                <element signature="e#3842#3850#0" expanded="true" />
-                <element signature="e#6530#6538#0" expanded="true" />
-                <element signature="e#6592#6600#0" expanded="true" />
-                <element signature="e#6653#6661#0" expanded="true" />
-                <element signature="e#6715#6723#0" expanded="true" />
-                <element signature="e#6776#6784#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -244,12 +231,13 @@
       <workItem from="1528031524416" duration="16150000" />
       <workItem from="1528206987709" duration="20111000" />
       <workItem from="1528612631064" duration="328000" />
-      <workItem from="1528705071057" duration="1154000" />
+      <workItem from="1528705071057" duration="1314000" />
+      <workItem from="1528707262614" duration="651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67160000" />
+    <option name="totallyTimeSpent" value="67971000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="712" extended-state="0" />
@@ -257,15 +245,14 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3291536" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3181818" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3181818" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -275,15 +262,16 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44043887" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3296875" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3291536" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +325,24 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" selection-start-line="4" selection-start-column="4" selection-end-line="32" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8132">
+          <caret line="432" column="52" selection-start-line="432" selection-start-column="50" selection-end-line="432" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="32" selection-start-line="4" selection-start-column="4" selection-end-line="32" />
           <folding>
@@ -350,19 +356,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2926">
           <caret line="154" column="33" selection-start-line="154" selection-start-column="33" selection-end-line="154" selection-end-column="33" />
-          <folding>
-            <element signature="e#179#188#0" expanded="true" />
-            <element signature="e#259#279#0" expanded="true" />
-            <element signature="e#403#412#0" expanded="true" />
-            <element signature="e#483#500#0" expanded="true" />
-            <element signature="e#635#652#0" expanded="true" />
-            <element signature="e#3842#3850#0" expanded="true" />
-            <element signature="e#6530#6538#0" expanded="true" />
-            <element signature="e#6592#6600#0" expanded="true" />
-            <element signature="e#6653#6661#0" expanded="true" />
-            <element signature="e#6715#6723#0" expanded="true" />
-            <element signature="e#6776#6784#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -498,7 +491,7 @@
     <entry file="file://$PROJECT_DIR$/src/algotest/dghf.java" />
     <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="608">
           <caret line="32" selection-start-line="4" selection-start-column="4" selection-end-line="32" />
           <folding>
             <element signature="e#282#283#0" expanded="true" />
@@ -512,19 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="432" column="52" selection-start-line="432" selection-start-column="50" selection-end-line="432" selection-end-column="52" />
-          <folding>
-            <element signature="e#179#188#0" expanded="true" />
-            <element signature="e#259#279#0" expanded="true" />
-            <element signature="e#403#412#0" expanded="true" />
-            <element signature="e#483#500#0" expanded="true" />
-            <element signature="e#635#652#0" expanded="true" />
-            <element signature="e#3842#3850#0" expanded="true" />
-            <element signature="e#6530#6538#0" expanded="true" />
-            <element signature="e#6592#6600#0" expanded="true" />
-            <element signature="e#6653#6661#0" expanded="true" />
-            <element signature="e#6715#6723#0" expanded="true" />
-            <element signature="e#6776#6784#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
