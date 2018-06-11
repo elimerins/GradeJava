@@ -129,7 +129,6 @@ class lecturealgo{
 
     }
 
-
     //중복검사
     public static boolean duplication_check(ArrayList<lecture> f_lecs){
         boolean result=true;
