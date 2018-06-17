@@ -53,7 +53,7 @@ class lecturealgo{
 
 
         //System.out.println(lecs.size());
-        for (int num=0;num<5;num++) {//how
+        for (int num=0;num<50;num++) {//how
             double cohesion=0.0;
             total_leccredit=0;
             Collections.shuffle(lecs);
@@ -94,7 +94,7 @@ class lecturealgo{
                             lectime_list.add(piece);
                         }
                     }
-                    /*
+
                     System.out.print("Not sorted : ");
                     for (String lec : lectime_list){
                         System.out.print(lec);//before sort print
@@ -107,7 +107,7 @@ class lecturealgo{
                         System.out.print(lec);
                     }
                     System.out.println();
-                    */
+
                     cohesion=cohesioncheck(lectime_list);
                     System.out.print(cohesion);
                     System.out.println("\n\nDone\n");
@@ -152,6 +152,7 @@ class lecturealgo{
         return result;
     }
     public static double cohesioncheck(ArrayList<String> lectime){
+        //응집도 계산을 위한 함수
         double cohesion_degree=0;//응집도
         ArrayList<Double> m_daytime=new ArrayList<Double>();
         ArrayList<Double> tu_daytime=new ArrayList<Double>();
@@ -164,38 +165,43 @@ class lecturealgo{
             if (day.equals("월")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 m_daytime.add(calc(type));
+                //numeric or alpha check and result value add to monday arraylist
+                /*
                 for (Double time:m_daytime){
                     System.out.print(day+time+" ");
                 }
+
                 System.out.println();
+                */
             }else if (day.equals("화")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 tu_daytime.add(calc(type));
-                for (Double time:tu_daytime){
+                /*for (Double time:tu_daytime){
                     System.out.print(day+time+" ");
                 }
                 System.out.println();
+                */
             }else if (day.equals("수")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 w_daytime.add(calc(type));
-                for (Double time:w_daytime){
+                /*for (Double time:w_daytime){
                     System.out.print(day+time+" ");
                 }
-                System.out.println();
+                System.out.println();*/
             }else if (day.equals("목")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 th_daytime.add(calc(type));
-                for (Double time:th_daytime){
+                /*for (Double time:th_daytime){
                     System.out.print(day+time+" ");
                 }
-                System.out.println();
+                System.out.println();*/
             }else if (day.equals("금")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 f_daytime.add(calc(type));
-                for (Double time:f_daytime){
+                /*for (Double time:f_daytime){
                     System.out.print(day+time+" ");
                 }
-                System.out.println();
+                System.out.println();*/
             }
         }
         Collections.sort(m_daytime);
@@ -225,6 +231,7 @@ class lecturealgo{
 
     }
     public static double calc(String type){
+        //checking
         double result=0;
         if (isAlpha(type)){
             double itype = type.charAt(0);
@@ -263,208 +270,45 @@ class lecturealgo{
                 if (f_lecs.get(i).lecname.equals(lecname)){
                     return false;
                 }else {
-                    if (lectime[j].equals("월1")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월A"))
+                    String day=Character.toString(lectime[j].charAt(0));
+                    if (lectime[j].equals(day+"1")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"A"))
                             return false;
-                    } else if (lectime[j].equals("월2")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월A"))
+                    } else if (lectime[j].equals(day+"2")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"A"))
                             return false;
-                    } else if (lectime[j].equals("월3")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월B"))
+                    } else if (lectime[j].equals(day+"3")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"B"))
                             return false;
-                    } else if (lectime[j].equals("월4")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월B") || f_lecs.get(i).lectime.contains("월C"))
+                    } else if (lectime[j].equals(day+"4")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"B") || f_lecs.get(i).lectime.contains(day+"C"))
                             return false;
-                    } else if (lectime[j].equals("월5")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월C"))
+                    } else if (lectime[j].equals(day+"5")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"C"))
                             return false;
-                    } else if (lectime[j].equals("월6")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월D"))
+                    } else if (lectime[j].equals(day+"6")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"D"))
                             return false;
-                    } else if (lectime[j].equals("월7")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월D") || f_lecs.get(i).lectime.contains("월E"))
+                    } else if (lectime[j].equals(day+"7")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"D") || f_lecs.get(i).lectime.contains(day+"E"))
                             return false;
-                    } else if (lectime[j].equals("월8")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월E"))
+                    } else if (lectime[j].equals(day+"8")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"E"))
                             return false;
-                    } else if (lectime[j].equals("월A")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월1") || f_lecs.get(i).lectime.contains("월2"))
+                    } else if (lectime[j].equals(day+"A")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"1") || f_lecs.get(i).lectime.contains(day+"2"))
                             return false;
-                    } else if (lectime[j].equals("월B")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월3") || f_lecs.get(i).lectime.contains("월4"))
+                    } else if (lectime[j].equals(day+"B")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"3") || f_lecs.get(i).lectime.contains(day+"4"))
                             return false;
-                    } else if (lectime[j].equals("월C")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월4") || f_lecs.get(i).lectime.contains("월5"))
+                    } else if (lectime[j].equals(day+"C")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"4") || f_lecs.get(i).lectime.contains(day+"5"))
                             return false;
-                    } else if (lectime[j].equals("월D")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월6") || f_lecs.get(i).lectime.contains("월7"))
+                    } else if (lectime[j].equals(day+"D")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"6") || f_lecs.get(i).lectime.contains(day+"7"))
                             return false;
-                    } else if (lectime[j].equals("월E")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("월7") || f_lecs.get(i).lectime.contains("월8"))
-                            return false;
-                    }
-                    //tuesday
-                    else if (lectime[j].equals("화1")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화A"))
-                            return false;
-                    } else if (lectime[j].equals("화2")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화A"))
-                            return false;
-                    } else if (lectime[j].equals("화3")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화B"))
-                            return false;
-                    } else if (lectime[j].equals("화4")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화B") || f_lecs.get(i).lectime.contains("화C"))
-                            return false;
-                    } else if (lectime[j].equals("화5")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화C"))
-                            return false;
-                    } else if (lectime[j].equals("화6")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화D"))
-                            return false;
-                    } else if (lectime[j].equals("화7")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화D") || f_lecs.get(i).lectime.contains("화E"))
-                            return false;
-                    } else if (lectime[j].equals("화8")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화E"))
-                            return false;
-                    } else if (lectime[j].equals("화A")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화1") || f_lecs.get(i).lectime.contains("화2"))
-                            return false;
-                    } else if (lectime[j].equals("화B")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화3") || f_lecs.get(i).lectime.contains("화4"))
-                            return false;
-                    } else if (lectime[j].equals("화C")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화4") || f_lecs.get(i).lectime.contains("화5"))
-                            return false;
-                    } else if (lectime[j].equals("화D")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화6") || f_lecs.get(i).lectime.contains("화7"))
-                            return false;
-                    } else if (lectime[j].equals("화E")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("화7") || f_lecs.get(i).lectime.contains("화8"))
-                            return false;
-                    }
-                    //wednesday
-                    else if (lectime[j].equals("수1")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수A"))
-                            return false;
-                    } else if (lectime[j].equals("수2")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수A"))
-                            return false;
-                    } else if (lectime[j].equals("수3")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수B"))
-                            return false;
-                    } else if (lectime[j].equals("수4")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수B") || f_lecs.get(i).lectime.contains("수C"))
-                            return false;
-                    } else if (lectime[j].equals("수5")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수C"))
-                            return false;
-                    } else if (lectime[j].equals("수6")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수D"))
-                            return false;
-                    } else if (lectime[j].equals("수7")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수D") || f_lecs.get(i).lectime.contains("수E"))
-                            return false;
-                    } else if (lectime[j].equals("수8")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수E"))
-                            return false;
-                    } else if (lectime[j].equals("수A")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수1") || f_lecs.get(i).lectime.contains("수2"))
-                            return false;
-                    } else if (lectime[j].equals("수B")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수3") || f_lecs.get(i).lectime.contains("수4"))
-                            return false;
-                    } else if (lectime[j].equals("수C")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수4") || f_lecs.get(i).lectime.contains("수5"))
-                            return false;
-                    } else if (lectime[j].equals("수D")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수6") || f_lecs.get(i).lectime.contains("수7"))
-                            return false;
-                    } else if (lectime[j].equals("수E")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("수7") || f_lecs.get(i).lectime.contains("수8"))
-                            return false;
-                    }
-                    //thursday
-                    else if (lectime[j].equals("목1")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목A"))
-                            return false;
-                    } else if (lectime[j].equals("목2")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목A"))
-                            return false;
-                    } else if (lectime[j].equals("목3")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목B"))
-                            return false;
-                    } else if (lectime[j].equals("목4")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목B") || f_lecs.get(i).lectime.contains("목C"))
-                            return false;
-                    } else if (lectime[j].equals("목5")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목C"))
-                            return false;
-                    } else if (lectime[j].equals("목6")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목D"))
-                            return false;
-                    } else if (lectime[j].equals("목7")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목D") || f_lecs.get(i).lectime.contains("목E"))
-                            return false;
-                    } else if (lectime[j].equals("목8")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목E"))
-                            return false;
-                    } else if (lectime[j].equals("목A")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목1") || f_lecs.get(i).lectime.contains("목2"))
-                            return false;
-                    } else if (lectime[j].equals("목B")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목3") || f_lecs.get(i).lectime.contains("목4"))
-                            return false;
-                    } else if (lectime[j].equals("목C")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목4") || f_lecs.get(i).lectime.contains("목5"))
-                            return false;
-                    } else if (lectime[j].equals("목D")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목6") || f_lecs.get(i).lectime.contains("목7"))
-                            return false;
-                    } else if (lectime[j].equals("목E")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("목7") || f_lecs.get(i).lectime.contains("목8"))
-                            return false;
-                    }
-                    //friday
-                    else if (lectime[j].equals("금1")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금A"))
-                            return false;
-                    } else if (lectime[j].equals("금2")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금A"))
-                            return false;
-                    } else if (lectime[j].equals("금3")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금B"))
-                            return false;
-                    } else if (lectime[j].equals("금4")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금B") || f_lecs.get(i).lectime.contains("금C"))
-                            return false;
-                    } else if (lectime[j].equals("금5")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금C"))
-                            return false;
-                    } else if (lectime[j].equals("금6")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금D"))
-                            return false;
-                    } else if (lectime[j].equals("금7")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금D") || f_lecs.get(i).lectime.contains("금E"))
-                            return false;
-                    } else if (lectime[j].equals("금8")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금E"))
-                            return false;
-                    } else if (lectime[j].equals("금A")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금1") || f_lecs.get(i).lectime.contains("금2"))
-                            return false;
-                    } else if (lectime[j].equals("금B")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금3") || f_lecs.get(i).lectime.contains("금4"))
-                            return false;
-                    } else if (lectime[j].equals("금C")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금4") || f_lecs.get(i).lectime.contains("금5"))
-                            return false;
-                    } else if (lectime[j].equals("금D")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금6") || f_lecs.get(i).lectime.contains("금7"))
-                            return false;
-                    } else if (lectime[j].equals("금E")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains("금7") || f_lecs.get(i).lectime.contains("금8"))
+                    } else if (lectime[j].equals(day+"E")) {
+                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"7") || f_lecs.get(i).lectime.contains(day+"8"))
                             return false;
                     }
                 }
