@@ -53,7 +53,7 @@ class lecturealgo{
 
 
         //System.out.println(lecs.size());
-        for (int num=0;num<50;num++) {//how
+        for (int num=0;num<5000;num++) {//how
             double cohesion=0.0;
             total_leccredit=0;
             Collections.shuffle(lecs);
@@ -65,8 +65,9 @@ class lecturealgo{
             for (int i=1;i<lecs.size();i++){
 
                 if(credits==total_leccredit){
+
                     if (!duplication_check(f_lecs)){
-                        System.out.println(num+" is duplicated to\n");
+                        System.out.println(num+" is duplicated.\n");
                         break;
                     }
                     else{
@@ -125,17 +126,21 @@ class lecturealgo{
     public static boolean duplication_check(ArrayList<lecture> f_lecs){
         boolean result=true;
         for (ArrayList<lecture> combination:combinations) {
+
             if (new HashSet(combination).equals(new HashSet(f_lecs))) {
                 //which combination is duplicated.
-                for (lecture comb:combination){
-                    System.out.println(comb.lecname+" "+comb.lectime);
-                }
-                System.out.println();
+
+                System.out.println("--------BREAK-------");
+
                 for (lecture lec:f_lecs){
                     System.out.println(lec.lecname+" "+lec.lectime);
                 }
+                System.out.println();
+                for (lecture comb:combination){
+                    System.out.println(comb.lecname+" "+comb.lectime);
+                }
 
-                System.out.println("\n"+combinations.indexOf(combination)+"is duplicated with this.");
+                System.out.println("\n"+combinations.indexOf(combination)+" is duplicated with this.");
                 result=false;//중복 검증
             }else{
                 continue;
