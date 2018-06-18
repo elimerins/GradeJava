@@ -58,14 +58,6 @@ class lecturealgo{
             total_leccredit=0;
             Collections.shuffle(lecs);
             f_lecs.clear();
-            /*
-            for (ArrayList<lecture> lec:combinations){
-                for (lecture innerlec:lec){
-                    System.out.print(innerlec.lecname+"/ ");
-                }
-                System.out.println();
-            }
-            */
             f_lecs.add(lecs.get(0));
             total_leccredit+=f_lecs.get(0).lec_credit;
 
@@ -165,43 +157,23 @@ class lecturealgo{
             if (day.equals("월")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 m_daytime.add(calc(type));
-                //numeric or alpha check and result value add to monday arraylist
-                /*
-                for (Double time:m_daytime){
-                    System.out.print(day+time+" ");
-                }
 
-                System.out.println();
-                */
             }else if (day.equals("화")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 tu_daytime.add(calc(type));
-                /*for (Double time:tu_daytime){
-                    System.out.print(day+time+" ");
-                }
-                System.out.println();
-                */
+
             }else if (day.equals("수")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 w_daytime.add(calc(type));
-                /*for (Double time:w_daytime){
-                    System.out.print(day+time+" ");
-                }
-                System.out.println();*/
+
             }else if (day.equals("목")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 th_daytime.add(calc(type));
-                /*for (Double time:th_daytime){
-                    System.out.print(day+time+" ");
-                }
-                System.out.println();*/
+
             }else if (day.equals("금")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
                 f_daytime.add(calc(type));
-                /*for (Double time:f_daytime){
-                    System.out.print(day+time+" ");
-                }
-                System.out.println();*/
+
             }
         }
         Collections.sort(m_daytime);
