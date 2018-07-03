@@ -1,5 +1,6 @@
 package algotest;
 import java.util.*;
+import java.sql.*;
 
 class lecturealgo{
     static int total_leccredit=0;
@@ -15,12 +16,51 @@ class lecturealgo{
         ValueComparator bvc = new ValueComparator(cohesion_checked_list);
         TreeMap<Integer, Double> sorted_map = new TreeMap<Integer, Double>(bvc);
 
+        Connection connection = null;
+        Statement st = null;
 
         Scanner n=new Scanner(System.in);
-
         System.out.print("How many credits do you want? : ");
         int credits=n.nextInt();
 
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gtg?serverTimezone=UTC" , "gtg", "password");
+            st = connection.createStatement();
+
+            String sql = "select title,time,credit FROM course WHERE grade like '%컴퓨터공학과%'";
+
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData metaData=rs.getMetaData();
+            int numberOfColumns=metaData.getColumnCount();
+            while(rs.next()) {
+                String time= (String) rs.getObject(2);
+                time=time.replaceAll(" ","");//시간에 들어가는 모든 공백 제거
+                lecs.add(new lecture((String)rs.getObject(1),time,(int)rs.getObject(3)));
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch (SQLException se1) {
+            se1.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (st != null)
+                    st.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+
+        /*
         //add classes to arraylist value "lecs"
         lecs.add( new lecture("linux","월A,화B",3) );
         lecs.add( new lecture("linux","목A,금B",3) );
@@ -50,7 +90,7 @@ class lecturealgo{
         lecs.add( new lecture("the Civil Procedure Code (CPC)","수A,화B",3) );
         lecs.add( new lecture("intellectual property law","금C,금B",3) );
         lecs.add( new lecture("philosophy of law","목A,목B",3) );
-
+        */
 
         //System.out.println(lecs.size());
         for (int num=0;num<5000;num++) {//how
@@ -242,6 +282,7 @@ class lecturealgo{
         return str.matches("^[1-9]*$");
     }
     public static boolean compare(String[] lectime,String lecname){
+        //시간겹침계산을 위한 함수
         for (int i=0;i<f_lecs.size();i++)
             for (int j=0;j<lectime.length;j++){
                 if (f_lecs.get(i).lecname.equals(lecname)){
