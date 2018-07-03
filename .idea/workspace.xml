@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58da58f2-6ee5-48da-8b8c-12cd6e994439" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algotest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/algotest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algotest/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algotest/main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -48,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2106">
-              <caret line="290" selection-start-line="290" selection-end-line="290" />
+            <state relative-caret-position="2944">
+              <caret line="338" column="50" selection-start-line="338" selection-start-column="50" selection-end-line="338" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#179#188#0" expanded="true" />
@@ -77,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24" selection-start-column="24" selection-end-column="24" />
+            <state relative-caret-position="76">
+              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -132,8 +130,8 @@
         <option value="$PROJECT_DIR$/src/algotest/lecturealgo.java" />
         <option value="$PROJECT_DIR$/src/algotest/lecture.java" />
         <option value="$PROJECT_DIR$/src/algotest/cohesionsort.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql" />
         <option value="$PROJECT_DIR$/src/algotest/main.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql" />
       </list>
     </option>
   </component>
@@ -149,7 +147,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1670" />
-    <option name="height" value="1353" />
+    <option name="height" value="1337" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -294,15 +292,16 @@
       <workItem from="1529297146185" duration="326000" />
       <workItem from="1529303240618" duration="1741000" />
       <workItem from="1530194054817" duration="351000" />
-      <workItem from="1530621152005" duration="3944000" />
+      <workItem from="1530621152005" duration="8911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81492000" />
+    <option name="totallyTimeSpent" value="86459000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1670" height="1353" extended-state="0" />
+    <frame x="0" y="23" width="1670" height="1337" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -317,7 +316,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
-      <window_info anchor="bottom" id="Database Console" weight="0.41829553" />
+      <window_info active="true" anchor="bottom" id="Database Console" visible="true" weight="0.41805226" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26107785" />
       <window_info anchor="right" id="Database" order="3" weight="0.659375" />
@@ -325,7 +324,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.43627834" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.456057" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3296875" />
@@ -347,24 +346,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
-          <line>109</line>
+          <line>118</line>
           <properties />
-          <option name="timeStamp" value="110" />
+          <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
-          <line>110</line>
+          <line>339</line>
           <properties />
-          <option name="timeStamp" value="112" />
+          <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
-          <line>290</line>
+          <line>338</line>
           <properties />
-          <option name="timeStamp" value="192" />
+          <option name="timeStamp" value="203" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="193" />
+      <option name="time" value="204" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -661,17 +660,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2106">
-          <caret line="290" selection-start-line="290" selection-end-line="290" />
+        <state relative-caret-position="2944">
+          <caret line="338" column="50" selection-start-line="338" selection-start-column="50" selection-end-line="338" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#179#188#0" expanded="true" />
@@ -695,6 +687,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -712,7 +711,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -6,12 +6,12 @@ class lecturealgo{
     static int total_leccredit=0;
 
     //declare fixed timetable array
-    static ArrayList<lecture> f_lecs=new ArrayList<lecture>();
+    static ArrayList<lecture> f_lecs=new ArrayList<lecture>();//출력될 시간표 조합
     static ArrayList<ArrayList<lecture>> combinations=new ArrayList<ArrayList<lecture>>();
 
     public static void main(String[] args){
         //declare arraylist
-        ArrayList<lecture> lecs = new ArrayList<lecture>();
+        ArrayList<lecture> lecs = new ArrayList<lecture>();//시간표들
         HashMap<Integer,Double> cohesion_checked_list = new HashMap<Integer, Double>();
         ValueComparator bvc = new ValueComparator(cohesion_checked_list);
         TreeMap<Integer, Double> sorted_map = new TreeMap<Integer, Double>(bvc);
@@ -20,14 +20,16 @@ class lecturealgo{
         Statement st = null;
 
         Scanner n=new Scanner(System.in);
-        System.out.print("How many credits do you want? : ");
+        System.out.print("How many credits do you want to hear at least? : ");
         int credits=n.nextInt();
+        System.out.print("How many for MAX? : ");
+        int max_credits=n.nextInt();
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gtg?serverTimezone=UTC" , "gtg", "password");
             st = connection.createStatement();
 
-            String sql = "select title,time,credit FROM course WHERE grade like '%컴퓨터공학과%'";
+            String sql = "select title,time,credit FROM course WHERE grade like '%컴퓨터공학과%' and time IS NOT NULL and not title like '%현장실습%'";
 
             ResultSet rs = st.executeQuery(sql);
 
@@ -102,17 +104,17 @@ class lecturealgo{
             total_leccredit+=f_lecs.get(0).lec_credit;
 
 
-            for (int i=1;i<lecs.size();i++){
+            for (int i=1;i<lecs.size();i++){//시간표후보 속에서 조합시작
 
-                if(credits==total_leccredit){
+                if(credits<=total_leccredit&&total_leccredit<=max_credits ){// 범위설정
 
-                    if (!duplication_check(f_lecs)){
+                    if (!duplication_check(f_lecs)){//과목들의 중복검사
                         System.out.println(num+" is duplicated.\n");
                         break;
                     }
                     else{
                         //deep copy. shallow copy는 clear시 연결되어 같이 초기화됨.
-                        combinations.add((ArrayList<lecture>)f_lecs.clone());
+                        combinations.add((ArrayList<lecture>)f_lecs.clone());//이 부분은 티스토리에 같이 적는 것이 좋겠다.
                     }
                     System.out.println("\n"+num);
 
@@ -127,6 +129,7 @@ class lecturealgo{
                             lectime_list.add(piece);
                         }
                     }
+                    System.out.println(total_leccredit);
 
                     System.out.print("Not sorted : ");
                     for (String lec : lectime_list){
@@ -148,6 +151,7 @@ class lecturealgo{
                     break;
 
                 }else if(compare(lecs.get(i).lectime.split(","),lecs.get(i).lecname)){
+                    //범위에 도달하지 못했다면 add.
                     f_lecs.add(lecs.get(i));
                     total_leccredit+=lecs.get(i).lec_credit;
 
@@ -248,7 +252,7 @@ class lecturealgo{
 
     }
     public static double calc(String type){
-        //checking
+        //isAlpha? or Numeric?
         double result=0;
         if (isAlpha(type)){
             double itype = type.charAt(0);
@@ -261,6 +265,7 @@ class lecturealgo{
         return result;
     }
     public static double change(double time){
+        //알파벳 교시의 치환
         if(time==1 || time==2 || time==3){
             time+=63;
         }else if (time==4){
@@ -288,46 +293,52 @@ class lecturealgo{
                 if (f_lecs.get(i).lecname.equals(lecname)){
                     return false;
                 }else {
-                    String day=Character.toString(lectime[j].charAt(0));
-                    if (lectime[j].equals(day+"1")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"A"))
-                            return false;
-                    } else if (lectime[j].equals(day+"2")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"A"))
-                            return false;
-                    } else if (lectime[j].equals(day+"3")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"B"))
-                            return false;
-                    } else if (lectime[j].equals(day+"4")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"B") || f_lecs.get(i).lectime.contains(day+"C"))
-                            return false;
-                    } else if (lectime[j].equals(day+"5")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"C"))
-                            return false;
-                    } else if (lectime[j].equals(day+"6")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"D"))
-                            return false;
-                    } else if (lectime[j].equals(day+"7")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"D") || f_lecs.get(i).lectime.contains(day+"E"))
-                            return false;
-                    } else if (lectime[j].equals(day+"8")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"E"))
-                            return false;
-                    } else if (lectime[j].equals(day+"A")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"1") || f_lecs.get(i).lectime.contains(day+"2"))
-                            return false;
-                    } else if (lectime[j].equals(day+"B")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"3") || f_lecs.get(i).lectime.contains(day+"4"))
-                            return false;
-                    } else if (lectime[j].equals(day+"C")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"4") || f_lecs.get(i).lectime.contains(day+"5"))
-                            return false;
-                    } else if (lectime[j].equals(day+"D")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"6") || f_lecs.get(i).lectime.contains(day+"7"))
-                            return false;
-                    } else if (lectime[j].equals(day+"E")) {
-                        if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"7") || f_lecs.get(i).lectime.contains(day+"8"))
-                            return false;
+                    try {
+                        String day=Character.toString(lectime[j].charAt(0));
+                        if (lectime[j].equals(day+"1")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"A"))
+                                return false;
+                        } else if (lectime[j].equals(day+"2")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"A"))
+                                return false;
+                        } else if (lectime[j].equals(day+"3")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"B"))
+                                return false;
+                        } else if (lectime[j].equals(day+"4")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"B") || f_lecs.get(i).lectime.contains(day+"C"))
+                                return false;
+                        } else if (lectime[j].equals(day+"5")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"C"))
+                                return false;
+                        } else if (lectime[j].equals(day+"6")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"D"))
+                                return false;
+                        } else if (lectime[j].equals(day+"7")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"D") || f_lecs.get(i).lectime.contains(day+"E"))
+                                return false;
+                        } else if (lectime[j].equals(day+"8")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"E"))
+                                return false;
+                        } else if (lectime[j].equals(day+"A")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"1") || f_lecs.get(i).lectime.contains(day+"2"))
+                                return false;
+                        } else if (lectime[j].equals(day+"B")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"3") || f_lecs.get(i).lectime.contains(day+"4"))
+                                return false;
+                        } else if (lectime[j].equals(day+"C")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"4") || f_lecs.get(i).lectime.contains(day+"5"))
+                                return false;
+                        } else if (lectime[j].equals(day+"D")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"6") || f_lecs.get(i).lectime.contains(day+"7"))
+                                return false;
+                        } else if (lectime[j].equals(day+"E")) {
+                            if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day+"7") || f_lecs.get(i).lectime.contains(day+"8"))
+                                return false;
+                        }
+                    } catch (StringIndexOutOfBoundsException e) {
+                        System.out.println(lectime[j]);
+                        System.err.printf("%nException : %s%n",e);
+                        e.printStackTrace();
                     }
                 }
             }
