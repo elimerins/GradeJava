@@ -61,41 +61,8 @@ class lecturealgo{
             }
         }
 
-
-        /*
-        //add classes to arraylist value "lecs"
-        lecs.add( new lecture("linux","월A,화B",3) );
-        lecs.add( new lecture("linux","목A,금B",3) );
-        lecs.add( new lecture("data structure","월C,월D",3) );
-        lecs.add( new lecture("java","월E,화E",3) );
-        lecs.add( new lecture("java","수E,목E",3) );
-        lecs.add( new lecture("database","수1,수2,화3,화4",3) );
-        lecs.add( new lecture("algorithm","수A,목B",3) );
-        lecs.add( new lecture("algorithm","금A,금B",3) );
-        lecs.add( new lecture("software analyze&design","월6,월7,금6,금7",3) );
-        lecs.add( new lecture("mobile programming","목B,화B",3) );
-        lecs.add( new lecture("python","수A,수B",3) );
-        lecs.add( new lecture("python","화A,화B",3) );
-        lecs.add( new lecture("web programming","목1,목2,목3,목4",3) );
-        lecs.add( new lecture("server programming","목A,수B",3) );
-        lecs.add( new lecture("embedded","화C,화D",3) );
-        lecs.add( new lecture("discrete mathmatics","목1,목2,목3,목4",3) );
-        lecs.add( new lecture("program logic","목C,목D",3) );
-        lecs.add( new lecture("computer engineering for begineer","화3,화4,화5",3) );
-        lecs.add( new lecture("operating system","월7,월8,화7,화8",3) );
-        lecs.add( new lecture("edu-eco seminar","금B,목B",3) );
-        lecs.add( new lecture("hacking test","목1,목2,화3,화4",3) );
-        lecs.add( new lecture("Total Project","월A,화B",3) );
-        lecs.add( new lecture("IT and Foundation","월A,화B",3));
-        lecs.add( new lecture("General theory of commercial law","수C,목D",3) );
-        lecs.add( new lecture("Itemize discussion of receivables","월B,화A",3) );
-        lecs.add( new lecture("the Civil Procedure Code (CPC)","수A,화B",3) );
-        lecs.add( new lecture("intellectual property law","금C,금B",3) );
-        lecs.add( new lecture("philosophy of law","목A,목B",3) );
-        */
-
-        //System.out.println(lecs.size());
-        for (int num=0;num<5000;num++) {//how
+        //시간표 조합 출력
+        for (int num=0;num<5;num++) {
             double cohesion=0.0;
             total_leccredit=0;
             Collections.shuffle(lecs);
@@ -104,7 +71,7 @@ class lecturealgo{
             total_leccredit+=f_lecs.get(0).lec_credit;
 
 
-            for (int i=1;i<lecs.size();i++){//시간표후보 속에서 조합시작
+            for (int i=1;i<lecs.size();i++){//시간표 후보군(from db) 속에서 조합시작
 
                 if(credits<=total_leccredit&&total_leccredit<=max_credits ){// 범위설정
 
@@ -164,10 +131,10 @@ class lecturealgo{
         // cohesion sort
 
 
-    }
+    }//main
 
-    //중복검사
-    public static boolean duplication_check(ArrayList<lecture> f_lecs){
+    //중복검사 메소드
+    private static boolean duplication_check(ArrayList<lecture> f_lecs){
         boolean result=true;
         for (ArrayList<lecture> combination:combinations) {
 
@@ -191,10 +158,13 @@ class lecturealgo{
             }
         }
         return result;
-    }
-    public static double cohesioncheck(ArrayList<String> lectime){
-        //응집도 계산을 위한 함수
+    }//duplication_check
+
+    //응집도 계산을 위한 함수
+    private static double cohesioncheck(ArrayList<String> lectime){
+
         double cohesion_degree=0;//응집도
+        //요일간 시간표 리스트
         ArrayList<Double> m_daytime=new ArrayList<Double>();
         ArrayList<Double> tu_daytime=new ArrayList<Double>();
         ArrayList<Double> w_daytime=new ArrayList<Double>();
@@ -202,6 +172,7 @@ class lecturealgo{
         ArrayList<Double> f_daytime=new ArrayList<Double>();
 
         for (String lec:lectime){
+            //요일마다 시간표리스트 추가
             String day= String.valueOf(lec.charAt(0));//day check in lectime  ex 월 화 수 목 금
             if (day.equals("월")){
                 String type=String.valueOf(lec.charAt(1));//check time lectime abcd 1234567
@@ -251,21 +222,23 @@ class lecturealgo{
         return cohesion_degree;
 
     }
-    public static double calc(String type){
-        //isAlpha? or Numeric?
+    //isAlpha? or Numeric?
+    private static double calc(String type){
+
         double result=0;
         if (isAlpha(type)){
-            double itype = type.charAt(0);
+            double itype = type.charAt(0);//아스키 코드값으로 변환
             return itype;
         }else if (isNumeric(type)){
-            double itype = Double.parseDouble(type);
+            double itype = Double.parseDouble(type);//알파벳 교시와 맞춤
             double ichange=change(itype);
             return ichange;
         }
         return result;
     }
-    public static double change(double time){
-        //알파벳 교시의 치환
+    //numeric class change to ascii code
+    private static double change(double time){
+
         if(time==1 || time==2 || time==3){
             time+=63;
         }else if (time==4){
@@ -345,6 +318,7 @@ class lecturealgo{
         return true;
     }
 }
+
 class ValueComparator implements Comparator<Integer> {
     Map<Integer, Double> base;
 

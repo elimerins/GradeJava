@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58da58f2-6ee5-48da-8b8c-12cd6e994439" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/algotest/ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/algotest/ValueComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/algotest/lecturealgo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/algotest/lecturealgo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algotest/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algotest/main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -46,40 +49,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2944">
-              <caret line="338" column="50" selection-start-line="338" selection-start-column="50" selection-end-line="338" selection-end-column="50" />
+            <state relative-caret-position="203">
+              <caret line="320" lean-forward="true" selection-start-line="320" selection-end-line="320" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#179#188#0" expanded="true" />
-                <element signature="e#259#279#0" expanded="true" />
-                <element signature="e#403#412#0" expanded="true" />
-                <element signature="e#483#500#0" expanded="true" />
-                <element signature="e#635#652#0" expanded="true" />
-                <element signature="e#4896#4904#0" expanded="true" />
-                <element signature="e#7624#7632#0" expanded="true" />
-                <element signature="e#7686#7694#0" expanded="true" />
-                <element signature="e#7747#7755#0" expanded="true" />
-                <element signature="e#7809#7817#0" expanded="true" />
-                <element signature="e#7870#7878#0" expanded="true" />
-                <element signature="e#10543#10544#0" expanded="true" />
-                <element signature="e#10592#10593#0" expanded="true" />
-                <element signature="e#10641#10642#0" expanded="true" />
-                <element signature="e#10687#10688#0" expanded="true" />
-                <element signature="e#14390#14391#0" expanded="true" />
-                <element signature="e#14422#14423#0" expanded="true" />
+                <element signature="e#198#207#0" expanded="true" />
+                <element signature="e#290#310#0" expanded="true" />
+                <element signature="e#434#443#0" expanded="true" />
+                <element signature="e#520#537#0" expanded="true" />
+                <element signature="e#672#689#0" expanded="true" />
+                <element signature="e#3368#3376#0" expanded="true" />
+                <element signature="e#6245#6253#0" expanded="true" />
+                <element signature="e#6307#6315#0" expanded="true" />
+                <element signature="e#6368#6376#0" expanded="true" />
+                <element signature="e#6430#6438#0" expanded="true" />
+                <element signature="e#6491#6499#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+            <state relative-caret-position="95">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -130,8 +127,8 @@
         <option value="$PROJECT_DIR$/src/algotest/lecturealgo.java" />
         <option value="$PROJECT_DIR$/src/algotest/lecture.java" />
         <option value="$PROJECT_DIR$/src/algotest/cohesionsort.java" />
-        <option value="$PROJECT_DIR$/src/algotest/main.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql" />
+        <option value="$PROJECT_DIR$/src/algotest/main.java" />
       </list>
     </option>
   </component>
@@ -144,18 +141,18 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1670" />
-    <option name="height" value="1337" />
+    <option name="width" value="1280" />
+    <option name="height" value="709" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -292,33 +289,34 @@
       <workItem from="1529297146185" duration="326000" />
       <workItem from="1529303240618" duration="1741000" />
       <workItem from="1530194054817" duration="351000" />
-      <workItem from="1530621152005" duration="8911000" />
+      <workItem from="1530621152005" duration="9229000" />
+      <workItem from="1531111178975" duration="854000" />
+      <workItem from="1531114824945" duration="430000" />
+      <workItem from="1531115296835" duration="406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86459000" />
+    <option name="totallyTimeSpent" value="88467000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1670" height="1337" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="707" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3291536" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.52425665" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.38740158" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
-      <window_info active="true" anchor="bottom" id="Database Console" visible="true" weight="0.41805226" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26107785" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2609375" />
       <window_info anchor="right" id="Database" order="3" weight="0.659375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -326,12 +324,14 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.456057" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3296875" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3291536" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Database Console" order="8" weight="0.41805226" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3296875" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
@@ -346,24 +346,80 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
-          <line>118</line>
-          <properties />
-          <option name="timeStamp" value="194" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
-          <line>339</line>
+          <line>312</line>
           <properties />
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
-          <line>338</line>
+          <line>311</line>
           <properties />
           <option name="timeStamp" value="203" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>178</line>
+          <properties />
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>182</line>
+          <properties />
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>186</line>
+          <properties />
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>190</line>
+          <properties />
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>194</line>
+          <properties />
+          <option name="timeStamp" value="208" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>243</line>
+          <properties />
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>240</line>
+          <properties />
+          <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>241</line>
+          <properties />
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>229</line>
+          <properties />
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>225</line>
+          <properties class="algotest.lecturealgo" method="calc">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="204" />
+      <option name="time" value="214" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -372,6 +428,123 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" selection-start-line="4" selection-start-column="4" selection-end-line="32" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" lean-forward="true" selection-start-line="31" selection-start-column="138" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#198#207#0" expanded="true" />
+            <element signature="e#290#310#0" expanded="true" />
+            <element signature="e#434#443#0" expanded="true" />
+            <element signature="e#520#537#0" expanded="true" />
+            <element signature="e#672#689#0" expanded="true" />
+            <element signature="e#3368#3376#0" expanded="true" />
+            <element signature="e#6245#6253#0" expanded="true" />
+            <element signature="e#6307#6315#0" expanded="true" />
+            <element signature="e#6368#6376#0" expanded="true" />
+            <element signature="e#6430#6438#0" expanded="true" />
+            <element signature="e#6491#6499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="32" selection-start-line="4" selection-start-column="4" selection-end-line="32" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="31" column="89" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#198#207#0" expanded="true" />
+            <element signature="e#290#310#0" expanded="true" />
+            <element signature="e#434#443#0" expanded="true" />
+            <element signature="e#520#537#0" expanded="true" />
+            <element signature="e#672#689#0" expanded="true" />
+            <element signature="e#3368#3376#0" expanded="true" />
+            <element signature="e#6245#6253#0" expanded="true" />
+            <element signature="e#6307#6315#0" expanded="true" />
+            <element signature="e#6368#6376#0" expanded="true" />
+            <element signature="e#6430#6438#0" expanded="true" />
+            <element signature="e#6491#6499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="32" selection-start-line="4" selection-start-column="4" selection-end-line="32" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4370">
+          <caret line="230" column="37" lean-forward="true" selection-start-line="230" selection-start-column="37" selection-end-line="230" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#198#207#0" expanded="true" />
+            <element signature="e#290#310#0" expanded="true" />
+            <element signature="e#434#443#0" expanded="true" />
+            <element signature="e#520#537#0" expanded="true" />
+            <element signature="e#672#689#0" expanded="true" />
+            <element signature="e#3368#3376#0" expanded="true" />
+            <element signature="e#6245#6253#0" expanded="true" />
+            <element signature="e#6307#6315#0" expanded="true" />
+            <element signature="e#6368#6376#0" expanded="true" />
+            <element signature="e#6430#6438#0" expanded="true" />
+            <element signature="e#6491#6499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -389,23 +562,17 @@
           <caret line="228" column="21" lean-forward="true" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#179#188#0" expanded="true" />
-            <element signature="e#259#279#0" expanded="true" />
-            <element signature="e#403#412#0" expanded="true" />
-            <element signature="e#483#500#0" expanded="true" />
-            <element signature="e#635#652#0" expanded="true" />
-            <element signature="e#4896#4904#0" expanded="true" />
-            <element signature="e#7624#7632#0" expanded="true" />
-            <element signature="e#7686#7694#0" expanded="true" />
-            <element signature="e#7747#7755#0" expanded="true" />
-            <element signature="e#7809#7817#0" expanded="true" />
-            <element signature="e#7870#7878#0" expanded="true" />
-            <element signature="e#10543#10544#0" expanded="true" />
-            <element signature="e#10592#10593#0" expanded="true" />
-            <element signature="e#10641#10642#0" expanded="true" />
-            <element signature="e#10687#10688#0" expanded="true" />
-            <element signature="e#14390#14391#0" expanded="true" />
-            <element signature="e#14422#14423#0" expanded="true" />
+            <element signature="e#198#207#0" expanded="true" />
+            <element signature="e#290#310#0" expanded="true" />
+            <element signature="e#434#443#0" expanded="true" />
+            <element signature="e#520#537#0" expanded="true" />
+            <element signature="e#672#689#0" expanded="true" />
+            <element signature="e#3368#3376#0" expanded="true" />
+            <element signature="e#6245#6253#0" expanded="true" />
+            <element signature="e#6307#6315#0" expanded="true" />
+            <element signature="e#6368#6376#0" expanded="true" />
+            <element signature="e#6430#6438#0" expanded="true" />
+            <element signature="e#6491#6499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -660,37 +827,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2944">
-          <caret line="338" column="50" selection-start-line="338" selection-start-column="50" selection-end-line="338" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#179#188#0" expanded="true" />
-            <element signature="e#259#279#0" expanded="true" />
-            <element signature="e#403#412#0" expanded="true" />
-            <element signature="e#483#500#0" expanded="true" />
-            <element signature="e#635#652#0" expanded="true" />
-            <element signature="e#4896#4904#0" expanded="true" />
-            <element signature="e#7624#7632#0" expanded="true" />
-            <element signature="e#7686#7694#0" expanded="true" />
-            <element signature="e#7747#7755#0" expanded="true" />
-            <element signature="e#7809#7817#0" expanded="true" />
-            <element signature="e#7870#7878#0" expanded="true" />
-            <element signature="e#10543#10544#0" expanded="true" />
-            <element signature="e#10592#10593#0" expanded="true" />
-            <element signature="e#10641#10642#0" expanded="true" />
-            <element signature="e#10687#10688#0" expanded="true" />
-            <element signature="e#14390#14391#0" expanded="true" />
-            <element signature="e#14422#14423#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="95">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfd4f850-906f-4753-a3ff-76d8eed662c5/console.sql">
+    <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        <state relative-caret-position="203">
+          <caret line="320" lean-forward="true" selection-start-line="320" selection-end-line="320" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#198#207#0" expanded="true" />
+            <element signature="e#290#310#0" expanded="true" />
+            <element signature="e#434#443#0" expanded="true" />
+            <element signature="e#520#537#0" expanded="true" />
+            <element signature="e#672#689#0" expanded="true" />
+            <element signature="e#3368#3376#0" expanded="true" />
+            <element signature="e#6245#6253#0" expanded="true" />
+            <element signature="e#6307#6315#0" expanded="true" />
+            <element signature="e#6368#6376#0" expanded="true" />
+            <element signature="e#6430#6438#0" expanded="true" />
+            <element signature="e#6491#6499#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -711,7 +872,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
