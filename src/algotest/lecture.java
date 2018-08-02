@@ -1,16 +1,9 @@
 package algotest;
 
 public class lecture {
-    //private int lecnum;
     public String lecname;
-    /*private char lectype;
-
-    private int lecpeople;*/
     public String lectime;
     public int lec_credit;
-	/*private char lecprof;
-	private char lecroom;
-	private char leclevel;*/
 
     public lecture() {
         this("", "", 0);
@@ -30,6 +23,7 @@ public class lecture {
         this.lec_credit = lec_credit;
 
     }
+
 
 
 }
