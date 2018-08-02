@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82fae293-efd6-4f36-95cf-4c9fd8354d8c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfd4f850-906f-4753-a3ff-76d8eed662c5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/algotest/ValueComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/algotest/lecturealgo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algotest/lecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algotest/lecture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algotest/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algotest/main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -21,6 +11,25 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="root@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="242927363">
@@ -35,51 +44,67 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="3" />
+          <entry key="sql" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="3" />
+          <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1507" />
+          <entry key="java" value="2777" />
+          <entry key="sql" value="556" />
+          <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1506" />
-          <entry key="SQL" value="1" />
+          <entry key="JAVA" value="2767" />
+          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="SQL" value="10" />
+          <entry key="Scratch" value="556" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
-              <caret line="155" column="75" selection-start-line="155" selection-start-column="75" selection-end-line="155" selection-end-column="75" />
+            <state relative-caret-position="-3626">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
               <folding>
+                <element signature="e#6281#6289#0" expanded="true" />
                 <element signature="e#7701#7709#0" expanded="true" />
-                <element signature="e#12158#12159#0" expanded="true" />
-                <element signature="e#12207#12208#0" expanded="true" />
-                <element signature="e#12258#12259#0" expanded="true" />
-                <element signature="e#12304#12305#0" expanded="true" />
-                <element signature="e#17663#17664#0" expanded="true" />
-                <element signature="e#17695#17696#0" expanded="true" />
+                <element signature="e#12439#12440#0" expanded="true" />
+                <element signature="e#12488#12489#0" expanded="true" />
+                <element signature="e#12539#12540#0" expanded="true" />
+                <element signature="e#12585#12586#0" expanded="true" />
+                <element signature="e#17944#17945#0" expanded="true" />
+                <element signature="e#17976#17977#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/51f685b0-4dca-4536-9fde-755bf8e8400d/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="528">
+              <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -91,6 +116,9 @@
       <find>Collections.</find>
       <find>p</find>
       <find>fc_lecs</find>
+      <find>AddcombinationList</find>
+      <find>combinations.add</find>
+      <find>combinations</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -100,6 +128,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/algotest/lecture.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/51f685b0-4dca-4536-9fde-755bf8e8400d/console.sql" />
         <option value="$PROJECT_DIR$/src/algotest/main.java" />
       </list>
     </option>
@@ -111,10 +140,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1080" />
-    <option name="y" value="23" />
+    <option name="x" value="50" />
+    <option name="y" value="44" />
     <option name="width" value="1080" />
-    <option name="height" value="1827" />
+    <option name="height" value="697" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -153,9 +182,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533208571883" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533225330411" />
+    <property name="database.console.LAST_STATE" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -204,42 +235,43 @@
       <option name="presentableId" value="Default" />
       <updated>1533149303113</updated>
       <workItem from="1533149322655" duration="2206000" />
-      <workItem from="1533151744143" duration="10343000" />
+      <workItem from="1533151744143" duration="25900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12549000" />
+    <option name="totallyTimeSpent" value="28106000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1080" y="23" width="1080" height="1897" extended-state="6" />
+    <frame x="0" y="23" width="2560" height="1336" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14450867" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.059571087" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Database Console" visible="true" weight="0.48392284" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5722992" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.38227147" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5249196" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43086818" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32853186" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3279743" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.102859415" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Database" order="5" weight="0.32947975" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
@@ -256,9 +288,33 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
-          <line>144</line>
+          <line>347</line>
           <properties />
-          <option name="timeStamp" value="39" />
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>277</line>
+          <properties />
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>169</line>
+          <properties />
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/algotest/main.java</url>
+          <line>171</line>
+          <properties />
+          <option name="timeStamp" value="121" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -267,8 +323,21 @@
         <watch expression="combinations" language="JAVA" />
         <watch expression="resultList" language="JAVA" />
         <watch expression="lecs" language="JAVA" />
+        <watch expression="cohesion_degree" />
+        <watch expression="comb2" />
+        <watch expression="f_daytime" />
+        <watch expression="m_daytime" />
+        <watch expression="th_daytime" />
+        <watch expression="tu_daytime" />
+        <watch expression="w_daytime" />
+        <watch expression="num" />
+        <watch expression="lectime_list" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -287,25 +356,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/51f685b0-4dca-4536-9fde-755bf8e8400d/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algotest/lecture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
+        <state relative-caret-position="355">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algotest/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="155" column="75" selection-start-line="155" selection-start-column="75" selection-end-line="155" selection-end-column="75" />
+        <state relative-caret-position="-3626">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
           <folding>
+            <element signature="e#6281#6289#0" expanded="true" />
             <element signature="e#7701#7709#0" expanded="true" />
-            <element signature="e#12158#12159#0" expanded="true" />
-            <element signature="e#12207#12208#0" expanded="true" />
-            <element signature="e#12258#12259#0" expanded="true" />
-            <element signature="e#12304#12305#0" expanded="true" />
-            <element signature="e#17663#17664#0" expanded="true" />
-            <element signature="e#17695#17696#0" expanded="true" />
+            <element signature="e#12439#12440#0" expanded="true" />
+            <element signature="e#12488#12489#0" expanded="true" />
+            <element signature="e#12539#12540#0" expanded="true" />
+            <element signature="e#12585#12586#0" expanded="true" />
+            <element signature="e#17944#17945#0" expanded="true" />
+            <element signature="e#17976#17977#0" expanded="true" />
           </folding>
         </state>
       </provider>

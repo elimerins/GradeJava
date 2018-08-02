@@ -27,20 +27,25 @@ class lecturealgo {
         System.out.print("How many for MAX? : ");
         int max_credits = n.nextInt();
 
-        double cohesion = 0.0;
-
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gtg?serverTimezone=UTC", "gtg", "password");
             st = connection.createStatement();
             //쿼리문에서 대부분 조작가능. 공강, 시간대, professor name등..
             String sql = "SELECT title,time,credit " +
                     "FROM COURSE " +
-                    "WHERE MAJ_CD in (select maj_cd " +
+                    "WHERE (MAJ_CD in (select maj_cd " +
                                     "from mj " +
-                                    "where name like '%법학과%')"+
+                                    "where MAJ_CD like 'CP0116')"+
                     "AND SEMESTER=20 " +
                     "AND IFNULL(TIME,'') <> '' " +
-                    "AND GRADE LIKE '%2%'";
+                    "AND NOT TIME LIKE '%월%' " +
+                    "AND NOT TIME LIKE '%수%' " +
+                    "AND NOT TITLE LIKE '%(외국인반)%')"+
+                    "AND (" +
+                    "GRADE LIKE '%2%' "+
+                    "or GRADE LIKE '%3%' "+
+                    "or GRADE LIKE '%4%' " +
+                    ")";
 
 
             ResultSet rs = st.executeQuery(sql);
@@ -75,7 +80,10 @@ class lecturealgo {
         }
         int checker=0;
         //n개의 시간표 조합 출력
-        for (int num = 0; num < 100; num++) {
+        for (int num = 0; num < 500; num++) {
+            if (combinations.size()==100){
+                System.out.println();
+            }
             total_leccredit = 0;
             //섞기
             Collections.shuffle(lecs);
@@ -88,7 +96,7 @@ class lecturealgo {
             //시간표 후보군(from db) 속에서 1개의 시간표 조합 출력
             for (int i = 1; i < lecs.size(); i++) {
                 //조건에 맞는 최소 학점에 도달
-                if (total_leccredit<max_credits) {
+                if (total_leccredit<max_credits+1) {
                     if(total_leccredit<min_credits){
                         if (compare(lecs.get(i).lectime.split(","), lecs.get(i).lecname)){
                             f_lecs.add(lecs.get(i));
@@ -112,19 +120,22 @@ class lecturealgo {
                 }
             }
         }
+        System.out.println();
         //resultList 내에 각 comb는 순서와 상관없는 독립성을 지니고있어야한다.
         for (ArrayList<lecture> comb:combinations){
-            duplication_check(comb,combinations.indexOf(comb));
+            duplication_check(comb);
         }
 
         //
         //resultList를 출력한다.
-        for (ArrayList<lecture> result:resultList){
+
+        /*for (ArrayList<lecture> result:resultList){
             for (lecture lec:result){
                 System.out.println(lec.lecname+" "+lec.lectime+" ");
             }
             System.out.println();
-        }
+        }*/
+
         // cohesion sort
         System.out.println("unsorted map: " + cohesion_checked_list);
         sorted_map.putAll(cohesion_checked_list);
@@ -132,10 +143,11 @@ class lecturealgo {
 
 
         int[] keys= new int[sorted_map.size()];
-
+        double[] cohesion_list= new double[sorted_map.size()];
         for(int i=0;i<sorted_map.size();i++)
         {
             keys[i]= (int) new Vector(sorted_map.keySet()).get(i);
+            cohesion_list[i]=(double) new Vector(sorted_map.values()).get(i);
             /*System.out.printf("%d : %f",new Vector(sorted_map.keySet()).get(i),new Vector(sorted_map.values()).get(i));
             System.out.println();
             if(i>=5){
@@ -150,13 +162,28 @@ class lecturealgo {
             System.out.println("-------");
 
         }*/
-        for (int i=0;i<5;i++){
-            System.out.println(keys[i]);
-            for (int j=0;j<combinations.get(keys[i]).size();j++){
-                System.out.println(combinations.get(keys[i]).get(j).lecname +" "+combinations.get(keys[i]).get(j).lectime);
+        ArrayList<String> lectime_list2 = new ArrayList<String>();
+
+        for (int i=0;i<10;i++){
+            System.out.println("=============");
+            //System.out.println(keys[i]);
+            for (int j=0;j<resultList.get(keys[i]).size();j++){
+                System.out.println(resultList.get(keys[i]).get(j).lecname +" "+resultList.get(keys[i]).get(j).lectime);
+            }
+            System.out.println(cohesion_list[i]);
+            System.out.println("=============");
+        }
+        /*for (lecture lec : combinations.get(keys[i])) {
+            //System.out.println(lec.lecname+" "+lec.lectime);
+            String[] lecs_splited=lec.lectime.split(",");
+            for (String piece:lecs_splited){
+                lectime_list2.add(piece);
             }
         }
-
+        Collections.sort(lectime_list2);
+        double cohesion2 = cohesioncheck(lectime_list2,combinations.get(keys[i]));
+        System.out.println(cohesion2);
+        */
 
 
     }//main
@@ -173,15 +200,12 @@ class lecturealgo {
 
         //lectime& lecname show
         //1개의 시간표 대한 시간을 ',' 기준으로 쪼개서 배열로 나누고 리스트에 1 요소씩 추가
-        System.out.println("\n"+num);
+        /*System.out.println("\n"+num);
         for (lecture lec : f_lecs) {
             System.out.println(lec.lecname + " " + lec.lectime);
-            /*String[] lecs_splited = lec.lectime.split(",");
-            for (String piece : lecs_splited) {
-                lectime_list.add(piece);
-            }*/
+
         }
-        System.out.println(total_leccredit);
+        System.out.println(total_leccredit);*/
 
 
         return true;
@@ -189,7 +213,7 @@ class lecturealgo {
     }
 
     //중복검사 메소드
-    private static boolean duplication_check(ArrayList<lecture> comb,int IndexOf) {
+    private static boolean duplication_check(ArrayList<lecture> comb) {
         boolean result = true;
         //combinations 리스트에서 검색
         //which combination is duplicated.
@@ -199,9 +223,10 @@ class lecturealgo {
         for (ArrayList<lecture> OneOfresult:resultList){
 
             if (new HashSet(comb).equals(new HashSet(OneOfresult))){
-                System.out.println(IndexOf+" of combinations is duplicated with " +
+                //print if comb is duplicate with OneOfresult
+                /*System.out.println(IndexOf+" of combinations is duplicated with " +
                         ""+resultList.indexOf(OneOfresult)+
-                        " of resultList");
+                        " of resultList");*/
                 return false;
             }
         }
@@ -216,39 +241,42 @@ class lecturealgo {
         */
         ArrayList<lecture> comb2=(ArrayList<lecture>) comb.clone();
         resultList.add(comb2);
-        double cohesion = 0.0;
+
         //make lectime_list for checking cohesion
         //각 시간표의 응집도 계산을위한 lectime_list 생성
         ArrayList<String> lectime_list = new ArrayList<String>();
 
         //lectime& lecname show
         for (lecture lec : comb2) {
-            System.out.println(lec.lecname+" "+lec.lectime);
+            //System.out.println(lec.lecname+" "+lec.lectime);
             String[] lecs_splited=lec.lectime.split(",");
             for (String piece:lecs_splited){
                 lectime_list.add(piece);
             }
         }
         //정렬되지않은 시간을 보여줌
-        System.out.print("Not sorted : ");
+        /*System.out.print("Not sorted : ");
         for (String lec : lectime_list) {
             System.out.print(lec);//before sort print
         }
-        System.out.println();
+        System.out.println();*/
 
 
         //sorted lectime
         //시간을 정렬하고 정렬된 시간표를 보여줌
-        System.out.print("Sorted : ");
         Collections.sort(lectime_list);
+        /*System.out.print("Sorted : ");
         for (String lec : lectime_list) {
             System.out.print(lec);
         }
-        System.out.println();
+        System.out.println();*/
 
-        cohesion = cohesioncheck(lectime_list);
-        System.out.print(cohesion);
-        System.out.println("\n\nDone\n");
+        double cohesion = cohesioncheck(lectime_list,comb2);
+        //System.out.print(cohesion);
+        //System.out.println("\n\nDone\n");
+        /*if (cohesion==0.0){
+            System.out.println(resultList.indexOf(comb2)+" "+lectime_list);
+        }*/
 
         //시간표에 대한 인덱스와 시간표의 응집도를 cohesion check list 에 저장
         cohesion_checked_list.put(resultList.indexOf(comb2), cohesion);
@@ -257,9 +285,9 @@ class lecturealgo {
     }//duplication_check
 
     //응집도 계산을 위한 함수
-    private static double cohesioncheck(ArrayList<String> lectime) {
+    private static double cohesioncheck(ArrayList<String> lectime,ArrayList<lecture> comb2) {
 
-        double cohesion_degree = 0;//응집도
+        double cohesion_degree = 0.0;//응집도
         //요일간 시간표 리스트
         ArrayList<Double> m_daytime = new ArrayList<Double>();
         ArrayList<Double> tu_daytime = new ArrayList<Double>();
@@ -308,11 +336,16 @@ class lecturealgo {
         }
         for (int i = 0; i < th_daytime.size() - 1; i++) {
             cohesion_degree += th_daytime.get(i + 1) - th_daytime.get(i);
-
         }
         for (int i = 0; i < f_daytime.size() - 1; i++) {
             cohesion_degree += f_daytime.get(i + 1) - f_daytime.get(i);
 
+        }
+        if (lectime.size()>=7){
+            return cohesion_degree;
+        }
+        if (cohesion_degree<=1.0 && lectime.size()>=6.0){
+            return cohesion_degree;
         }
 
         return cohesion_degree;
