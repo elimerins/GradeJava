@@ -29,20 +29,26 @@ class lecturealgo {
         System.out.print("How many for MAX? : ");
         int max_credits = n.nextInt();
 
+        //libereal arts categorize.
         System.out.print("How many kinds of liberal arts do you want to hear? : ");
         int numberOfLiberalArts = n.nextInt();
+
+        //전공까지 자동 필터링을 위해서 1 추가해서 배열 선언
         int[] LiberalArtCodes=new int[numberOfLiberalArts+1];
         for (int i=0;i<LiberalArtCodes.length-1;i++){
+            //교양 코드 넣기
             System.out.print("Input liberal art code you want to hear : ");
             int LiberalArtCode=n.nextInt();
             LiberalArtCodes[i]=LiberalArtCode;
         }
+        //마지막은 자동으로 전공분류를 위해서 0삽입
         LiberalArtCodes[numberOfLiberalArts]=0;
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gtg?serverTimezone=UTC", "gtg", "password");
             st = connection.createStatement();
             //쿼리문에서 대부분 조작가능. 공강, 시간대, professor name등..
+            //cor_cd가 null=>전공이므로 오류방지를 위해 임의로 0을 삽입
             String sql = "SELECT title,time,credit,IFNULL(cor_cd,'0') cor_cd " +
                     "FROM COURSE " +
                     "WHERE (((MAJ_CD in (select maj_cd " +
@@ -53,7 +59,8 @@ class lecturealgo {
                     "AND (" +
                     //"GRADE LIKE '%3%' " +
                     //"or GRADE LIKE '%4%'" +
-                    "GRADE LIKE '%1%'" +
+                    "GRADE LIKE '%2%'" +
+                    "or GRADE LIKE '%3%'" +
                     "))" +
                     "or cor_cd in('101','103','104','102','105','106','107','108','109','110','112','113','114') " +
                     ")" +
@@ -90,14 +97,18 @@ class lecturealgo {
                 se.printStackTrace();
             }
         }
-        //n개의 시간표 조합 작성
 
+        //n개의 시간표 조합 작성
         MakeTimeTable(lecs,min_credits,max_credits);
+
         System.out.println();
 
+        //전공, 교양 포함여부 필터링 코드
         for (int i=0;i<LiberalArtCodes.length;i++){
             for (int j=0;j<combinations.size();j++){
                 try {
+                    //조건을 만족하지 못하면 해당 시간표 조합 combinations에서 remove
+                    //교양 및 전공 코드를 가지고 있는지 확인
                     if(!Conditional_remove(combinations.get(j),LiberalArtCodes[i])){
                         combinations.remove(combinations.get(j));
                     }
@@ -110,6 +121,7 @@ class lecturealgo {
         }
 
         //resultList 내에 각 comb는 순서와 상관없는 독립성을 지니고있어야한다.
+        //독립성 검증& resultlist에 최종 삽입
         for (ArrayList<lecture> comb:combinations){
             duplication_check(comb);
         }
@@ -119,7 +131,7 @@ class lecturealgo {
         sorted_map.putAll(cohesion_checked_list);
         System.out.println("results: " + sorted_map);
 
-
+        //키값 insert
         int[] keys= new int[sorted_map.size()];
         double[] cohesion_list= new double[sorted_map.size()];
         for(int i=0;i<sorted_map.size();i++)
@@ -141,7 +153,7 @@ class lecturealgo {
 
         }*/
         ArrayList<String> lectime_list2 = new ArrayList<String>();
-
+        //정렬 후 최종 출력
         for (int i=0;i<3;i++){
             if(i>resultList.size()){
                 break;
