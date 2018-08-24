@@ -11,10 +11,12 @@ class lecturealgo {
     static ArrayList<ArrayList<lecture>> combinations = new ArrayList<ArrayList<lecture>>();
     static HashMap<Integer, Double> cohesion_checked_list = new HashMap<Integer, Double>();
     static ArrayList<ArrayList<lecture>> resultList =new ArrayList<ArrayList<lecture>>();
+    static ArrayList<lecture> lecs = new ArrayList<lecture>();//시간표들
+    static int title_cd[]={010,011,012,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,999};
 
     public static void main(String[] args) {
         //declare arraylist
-        ArrayList<lecture> lecs = new ArrayList<lecture>();//시간표들
+
         ValueComparator bvc = new ValueComparator(cohesion_checked_list);
         TreeMap<Integer, Double> sorted_map = new TreeMap<Integer, Double>(bvc);
 
@@ -27,36 +29,46 @@ class lecturealgo {
         System.out.print("How many for MAX? : ");
         int max_credits = n.nextInt();
 
+        System.out.print("How many kinds of liberal arts do you want to hear? : ");
+        int numberOfLiberalArts = n.nextInt();
+        int[] LiberalArtCodes=new int[numberOfLiberalArts+1];
+        for (int i=0;i<LiberalArtCodes.length-1;i++){
+            System.out.print("Input liberal art code you want to hear : ");
+            int LiberalArtCode=n.nextInt();
+            LiberalArtCodes[i]=LiberalArtCode;
+        }
+        LiberalArtCodes[numberOfLiberalArts]=0;
+
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gtg?serverTimezone=UTC", "gtg", "password");
             st = connection.createStatement();
             //쿼리문에서 대부분 조작가능. 공강, 시간대, professor name등..
-            String sql = "SELECT title,time,credit " +
+            String sql = "SELECT title,time,credit,IFNULL(cor_cd,'0') cor_cd " +
                     "FROM COURSE " +
-                    "WHERE (MAJ_CD in (select maj_cd " +
+                    "WHERE (((MAJ_CD in (select maj_cd " +
                                     "from mj " +
-                                    "where MAJ_CD like 'CP0116')"+
+                                    "where MAJ_CD='C20110'))"+
                     "AND SEMESTER=20 " +
-                    "AND IFNULL(TIME,'') <> '' " +
-                    "AND NOT TIME LIKE '%월%' " +
-                    "AND NOT TIME LIKE '%수%' " +
-                    "AND NOT TITLE LIKE '%(외국인반)%')"+
+                    //"AND not TITLE like '종합프로젝트'" +
                     "AND (" +
-                    "GRADE LIKE '%2%' "+
-                    "or GRADE LIKE '%3%' "+
-                    "or GRADE LIKE '%4%' " +
-                    ")";
+                    //"GRADE LIKE '%3%' " +
+                    //"or GRADE LIKE '%4%'" +
+                    "GRADE LIKE '%1%'" +
+                    "))" +
+                    "or cor_cd in('101','103','104','102','105','106','107','108','109','110','112','113','114') " +
+                    ")" +
+                    //"AND not time like '%금%'" +
+                    "AND IFNULL(TIME, '') <> '' " +
+                    "AND NOT TITLE LIKE '%(외국인반)%'";
 
 
             ResultSet rs = st.executeQuery(sql);
             System.out.println(rs);
 
-            ResultSetMetaData metaData = rs.getMetaData();
-            int numberOfColumns = metaData.getColumnCount();
             while (rs.next()) {
                 String time = (String) rs.getObject(2);
                 time = time.replaceAll(" ", "");//시간에 들어가는 모든 공백 제거
-                lecs.add(new lecture((String) rs.getObject(1), time, (int) rs.getObject(3)));
+                lecs.add(new lecture((String) rs.getObject(1), time, (int) rs.getObject(3),(String) rs.getObject(4)));
             }
             rs.close();
             st.close();
@@ -78,63 +90,29 @@ class lecturealgo {
                 se.printStackTrace();
             }
         }
-        int checker=0;
-        //n개의 시간표 조합 출력
-        for (int num = 0; num < 500; num++) {
-            if (combinations.size()==100){
-                System.out.println();
-            }
-            total_leccredit = 0;
-            //섞기
-            Collections.shuffle(lecs);
+        //n개의 시간표 조합 작성
 
-            f_lecs.clear();
-            //비교를 위한 첫번째 아이템 추가
-            f_lecs.add(lecs.get(0));
-            total_leccredit += f_lecs.get(0).lec_credit;
+        MakeTimeTable(lecs,min_credits,max_credits);
+        System.out.println();
 
-            //시간표 후보군(from db) 속에서 1개의 시간표 조합 출력
-            for (int i = 1; i < lecs.size(); i++) {
-                //조건에 맞는 최소 학점에 도달
-                if (total_leccredit<max_credits+1) {
-                    if(total_leccredit<min_credits){
-                        if (compare(lecs.get(i).lectime.split(","), lecs.get(i).lecname)){
-                            f_lecs.add(lecs.get(i));
-                            total_leccredit += lecs.get(i).lec_credit;
-                        }
-                    }else if(total_leccredit>=min_credits) {
-                        //not over max_credit and over min credit
-                        AddCombinationList(f_lecs,num);
-                        if (compare(lecs.get(i).lectime.split(","), lecs.get(i).lecname)) {
-                            f_lecs.add(lecs.get(i));
-                            total_leccredit += lecs.get(i).lec_credit;
-                        }else{
-                            break;
-                        }
+        for (int i=0;i<LiberalArtCodes.length;i++){
+            for (int j=0;j<combinations.size();j++){
+                try {
+                    if(!Conditional_remove(combinations.get(j),LiberalArtCodes[i])){
+                        combinations.remove(combinations.get(j));
                     }
-                } else if (total_leccredit==max_credits){
-                    AddCombinationList(f_lecs,num);
-                    break;
-                }else{
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
                     break;
                 }
+
             }
         }
-        System.out.println();
+
         //resultList 내에 각 comb는 순서와 상관없는 독립성을 지니고있어야한다.
         for (ArrayList<lecture> comb:combinations){
             duplication_check(comb);
         }
-
-        //
-        //resultList를 출력한다.
-
-        /*for (ArrayList<lecture> result:resultList){
-            for (lecture lec:result){
-                System.out.println(lec.lecname+" "+lec.lectime+" ");
-            }
-            System.out.println();
-        }*/
 
         // cohesion sort
         System.out.println("unsorted map: " + cohesion_checked_list);
@@ -164,14 +142,22 @@ class lecturealgo {
         }*/
         ArrayList<String> lectime_list2 = new ArrayList<String>();
 
-        for (int i=0;i<10;i++){
+        for (int i=0;i<3;i++){
+            if(i>resultList.size()){
+                break;
+            }
             System.out.println("=============");
             //System.out.println(keys[i]);
+            int credits=0;
             for (int j=0;j<resultList.get(keys[i]).size();j++){
-                System.out.println(resultList.get(keys[i]).get(j).lecname +" "+resultList.get(keys[i]).get(j).lectime);
+                System.out.println(resultList.get(keys[i]).get(j).lecname +" "+resultList.get(keys[i]).get(j).lectime+" "+resultList.get(keys[i]).get(j).lec_cd);
+                credits+=resultList.get(keys[i]).get(j).lec_credit;
             }
+            System.out.printf("total credits : %d",credits);
+            System.out.println();
             System.out.println(cohesion_list[i]);
             System.out.println("=============");
+
         }
         /*for (lecture lec : combinations.get(keys[i])) {
             //System.out.println(lec.lecname+" "+lec.lectime);
@@ -187,6 +173,55 @@ class lecturealgo {
 
 
     }//main
+
+    private  static boolean MakeTimeTable(ArrayList<lecture> lecs,int min_credits,int max_credits){
+        for (int num = 0; num < 500; num++) {
+            total_leccredit = 0;
+            //섞기
+            Collections.shuffle(lecs);
+
+            f_lecs.clear();
+            //비교를 위한 첫번째 아이템 추가
+            f_lecs.add(lecs.get(0));
+            total_leccredit += f_lecs.get(0).lec_credit;
+
+            //시간표 후보군(from db) 속에서 1개의 시간표 조합 출력
+            for (int i = 1; i < lecs.size(); i++) {
+                //조건에 맞는 최소 학점에 도달
+                if (total_leccredit<max_credits+1) {
+                    if(total_leccredit<min_credits){
+                        if (compare(lecs.get(i).lectime.split(","), lecs.get(i).lecname,lecs.get(i).lec_cd,f_lecs)){
+                            f_lecs.add(lecs.get(i));
+                            total_leccredit += lecs.get(i).lec_credit;
+                        }
+                    }else if(total_leccredit>=min_credits) {
+                        //not over max_credit and over min credit
+                        AddCombinationList(f_lecs,num);
+                        if (compare(lecs.get(i).lectime.split(","), lecs.get(i).lecname,lecs.get(i).lec_cd,f_lecs)) {
+                            f_lecs.add(lecs.get(i));
+                            total_leccredit += lecs.get(i).lec_credit;
+                        }else{
+                            break;
+                        }
+                    }
+                } else if (total_leccredit==max_credits){
+                    AddCombinationList(f_lecs,num);
+                    break;
+                }else{
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+    private static boolean Conditional_remove(ArrayList<lecture> f_lecs,int code){
+        for (int i=0;i<f_lecs.size();i++){
+            if (Integer.parseInt(f_lecs.get(i).lec_cd)==code){
+                return true;
+            }
+        }
+        return false;
+    }
 
     private static boolean AddCombinationList(ArrayList<lecture> f_lecs,int num){
 
@@ -392,8 +427,14 @@ class lecturealgo {
         return str.matches("^[1-9]*$");
     }
 
-    public static boolean compare(String[] lectime, String lecname) {
-        //시간겹침계산을 위한 함수
+    public static boolean compare(String[] lectime, String lecname,String lec_cd,ArrayList<lecture> f_lecs) {
+        //시간겹침,코드겹침계산을 위한 함수
+        for (int i=0;i<f_lecs.size();i++){
+            if (f_lecs.get(i).lec_cd.equals(lec_cd)){
+                return false;
+            }
+        }
+
         for (int i = 0; i < f_lecs.size(); i++)
             for (int j = 0; j < lectime.length; j++) {
                 if (f_lecs.get(i).lecname.contains(lecname)) {
