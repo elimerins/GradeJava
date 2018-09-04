@@ -55,19 +55,22 @@ class lecturealgo {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gtg?serverTimezone=UTC", "gtg", "password");
             //쿼리문에서 대부분 조작가능. 공강, 시간대, professor name등..
             //cor_cd가 null=>전공이므로 오류방지를 위해 임의로 0을 삽입
-            st = connection.createStatement();
+
+            st=connection.createStatement();
 
             //전공
             String sql = "SELECT title,time,credit,IFNULL(cor_cd,'777') cor_cd " +
                     "FROM COURSE " +
-                    "WHERE (((MAJ_CD in ('CJ0200' or MAJ_CD='CL0110'))" +
+                    "WHERE (MAJ_CD in ('CJ0200','CL0110') " +//전공
                     //"AND not TITLE like '종합프로젝트'" +
                     "AND (" +
-                    //"GRADE LIKE '%1%' " +
-                    "GRADE LIKE '%2%'" +
-                    "or GRADE LIKE '%3%'" +
-                    "or GRADE LIKE '%4%'" +
-                    "))" +
+                    "GRADE LIKE '%1%' " +
+                    //"GRADE LIKE '%2%'" +
+                    //"or GRADE LIKE '%3%'" +
+                    //"or GRADE LIKE '%4%'" +
+                    ")" +
+                    //"AND NOT TITLE LIKE '%(외국인반)%'" +
+                    ")" +
                     "or cor_cd in (";
 
             String temp = "";
@@ -78,13 +81,13 @@ class lecturealgo {
             temp += ")";
             sql = sql + temp;
 
-            String sql2 =")" +
-                    "AND not time like '%금%'" +
-                    "AND not time like '%목%'"+
-                    "AND NOT TITLE LIKE '%Practi%'" +
+            String sql2 =
+                    //"AND not time like '%금%'" +
+                    //"AND not time like '%목%'"+
+                    "AND TITLE NOT LIKE '%Practi%'" +
                     "AND SEMESTER=20 " +
                     "AND IFNULL(TIME,'')<>'' " +
-                    "AND NOT TITLE LIKE '%(외국인반)%'";
+                    "AND TITLE NOT LIKE '%(외국인%'";
 
             PreparedStatement pst = connection.prepareStatement(sql + sql2);
 
@@ -110,10 +113,11 @@ class lecturealgo {
                     "'105','106','107','108','109'," +
                     "'110','111','112','113','114'," +
                     "'115','116','117','118','119','999') " +
-                    "AND NOT title like '%Practi%'" +// 영어를 제외해야하기때문
-                   "AND SEMESTER=20 " +
+                    "AND NOT title like '%Practic%' " +// 영어를 제외해야하기때문
+                    "AND SEMESTER=20 " +
                     "AND IFNULL(TIME,'')<>'' " +
                     "AND NOT TITLE LIKE '%(외국인반)%'";
+
             rs = st.executeQuery(cd_sql);
             System.out.println(rs);
 
@@ -124,12 +128,14 @@ class lecturealgo {
             }
 
             //영어만
+            //특정과목에서도 사용가능
             String En_sql = "SELECT title,time,credit,IF(cor_cd='110','666',cor_cd) " +
                     "FROM COURSE " +
-                    "WHERE title like '%English D2%'" +//특정과목
+                    "WHERE title like '%English D2%' " +//특정과목
                     "AND SEMESTER=20 " +
                     "AND IFNULL(TIME,'')<>'' " +
-                    "AND NOT TITLE LIKE '%(외국인반)%'";
+                    "AND TITLE not LIKE '%(외국인반)%'";
+
             rs = st.executeQuery(En_sql);
             System.out.println(rs);
 
@@ -162,7 +168,9 @@ class lecturealgo {
         }
 
         //n개의 시간표 조합 작성
+        System.out.println("TimeTable making START");
         MakeTimeTable(min_credits, max_credits);
+        System.out.println("TimeTable making END");
 
         System.out.println();
         Iterator<ArrayList<lecture>> iter = combinations.iterator();
@@ -194,6 +202,7 @@ class lecturealgo {
 
         //resultList 내에 각 comb는 순서와 상관없는 독립성을 지니고있어야한다.
         //독립성 검증& resultlist에 최종 삽입
+        System.out.println("Checking Duplication");
         for (ArrayList<lecture> comb : combinations) {
             duplication_check(comb);
         }
@@ -205,44 +214,6 @@ class lecturealgo {
         System.out.println("실행 시간 : " + (end - start) / 1000.0);
 
     }//main
-
-    //함수화 쪼개는 부분은 일부러 주석 남겨 놓습니다.
-    /*private static String SqlQuery(String[] maj_cd){
-        String sql="SELECT title,time,credit,IFNULL(cor_cd,'777') cor_cd " +
-                "FROM COURSE " +
-                "WHERE (((MAJ_CD in (";
-        String temp = "";
-        for (int i = 0; i < maj_cd.length; i++) {
-            temp += ",?";
-        }
-        temp = temp.replaceFirst(",", "");
-        temp += ")";//maj_cd
-        sql = sql + temp;
-        String sql2="AND (" +
-                "GRADE IN '%2%'" +
-                "or GRADE LIKE '%3%'" +
-                "or GRADE LIKE '%4%'" +
-                "))" ;
-
-        String sql3 =")" +
-                "AND SEMESTER=20 " +
-                "AND IFNULL(TIME,'')<>'' " +
-                "AND NOT TITLE LIKE '%(외국인반)%'";
-
-        return sql;
-    }
-    private static String SqlQuery(String[] maj_cd,String[] cor_cd){
-        String sql;
-        return sql;
-    }
-    private static String SqlQuery(String[] maj_cd,String English){
-        String sql;
-        return sql;
-    }
-    private static String SqlQuery(String[] maj_cd,String[] cor_cd,String English){
-        String sql;
-        return sql;
-    }*/
 
     private static void PrintList(TreeMap<Integer, Double> sorted_map) {
         // cohesion sort
@@ -258,7 +229,7 @@ class lecturealgo {
             cohesion_list[i] = (double) new Vector(sorted_map.values()).get(i);
 
         }
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 10; i++) {
             if (i > resultList.size()) {
                 break;
             }
@@ -284,7 +255,7 @@ class lecturealgo {
 
     private static boolean MakeTimeTable(int min_credits, int max_credits) {
 
-        for (int num = 0; num < 5000; num++) {
+        for (int num = 0; num < 1000; num++) {
             total_leccredit = 0;
             //섞기
             Collections.shuffle(lecs);
@@ -303,7 +274,6 @@ class lecturealgo {
                 MakeCombination(cd_lecs, max_credits, min_credits);
 
             }
-
         }
         return true;
     }
@@ -387,7 +357,6 @@ class lecturealgo {
 
     //응집도 계산을 위한 함수
     private static double cohesioncheck(ArrayList<String> lectime, ArrayList<lecture> comb2) {
-
         double cohesion_degree = 0.0;//응집도
         //요일간 시간표 리스트
         ArrayList<Double> m_daytime = new ArrayList<Double>();
@@ -508,9 +477,9 @@ class lecturealgo {
                 return false;
             } else if (lecname.contains(f_lecs.get(i).lecname)) {
                 return false;
-            } else if (lecname.equals(f_lecs.get(i).lecname)){
+            } else if (lecname.equals(f_lecs.get(i).lecname)) {
                 return false;
-            }else{
+            } else {
                 for (int j = 0; j < lectime.length; j++) {
                     try {
                         //시간표 후보의 강의 요일 추출
