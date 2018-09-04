@@ -18,6 +18,10 @@ public class lecture {
             throw new IllegalArgumentException("lecture time must be input");}
         if (lec_credit == 0){
             throw new IllegalArgumentException("lecture credit must be input");}
+        if (lec_cd==null){
+            throw new IllegalArgumentException("lecture code must be input");
+        }
+
 
         this.lecname = lecname;
         this.lectime = lectime;
