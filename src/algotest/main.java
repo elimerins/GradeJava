@@ -16,6 +16,8 @@ class lecturealgo {
     static ArrayList<lecture> lecs = new ArrayList<lecture>();//시간표들
     static ArrayList<lecture> cd_lecs = new ArrayList<lecture>();//교양 강의
     static ArrayList<lecture> En_lecs = new ArrayList<lecture>();//영어 강의
+    static ArrayList<lecture> User_lecs = new ArrayList<lecture>();//영어 강의
+
 
 
     public static void main(String[] args) {
@@ -38,7 +40,7 @@ class lecturealgo {
         System.out.print("How many kinds of liberal arts do you want to hear? : ");
         int numberOfLiberalArts = n.nextInt();
 
-        //전공까지 자동 필터링을 위해서 1 추가해서 배열 선언
+        //전공까지 자동 필터링을 위해서 2 추가해서 배열 선언
         String[] LiberalArtCodes = new String[numberOfLiberalArts + 2];
         for (int i = 0; i < numberOfLiberalArts; i++) {
             //교양 코드 넣기
@@ -46,7 +48,7 @@ class lecturealgo {
             int LiberalArtCode = n.nextInt();
             LiberalArtCodes[i] = Integer.toString(LiberalArtCode);
         }
-        //마지막은 자동으로 전공분류를 위해서 0삽입
+        //마지막은 자동으로 전공분류를 위해서 777삽입
         LiberalArtCodes[numberOfLiberalArts] = "777";
         LiberalArtCodes[numberOfLiberalArts + 1] = "666";
 
@@ -56,38 +58,41 @@ class lecturealgo {
             //쿼리문에서 대부분 조작가능. 공강, 시간대, professor name등..
             //cor_cd가 null=>전공이므로 오류방지를 위해 임의로 0을 삽입
 
-            st=connection.createStatement();
+            st = connection.createStatement();
+            String additional_query=
+                    "AND (TIME NOT LIKE '%1%')"+
+                    "AND (TIME NOT LIKE '%금%') "+
+                    "AND (SEMESTER=20) " +
+                    "AND (IFNULL(TIME,'') <> '') " +
+                    "AND (TITLE NOT LIKE '%(외국인반)%')";
 
             //전공
             String sql = "SELECT title,time,credit,IFNULL(cor_cd,'777') cor_cd " +
                     "FROM COURSE " +
-                    "WHERE (MAJ_CD in ('CJ0200','CL0110') " +//전공
+                    "WHERE ((MAJ_CD in ('CP0116') " +//전공
                     //"AND not TITLE like '종합프로젝트'" +
                     "AND (" +
                     "GRADE LIKE '%1%' " +
-                    //"GRADE LIKE '%2%'" +
+                    //" GRADE LIKE '%2%'" +
                     //"or GRADE LIKE '%3%'" +
                     //"or GRADE LIKE '%4%'" +
                     ")" +
-                    //"AND NOT TITLE LIKE '%(외국인반)%'" +
+                    //"AND TITLE NOT LIKE '%(외국인반)%'" +
                     ")" +
-                    "or cor_cd in (";
+                    "or (cor_cd in (";
 
             String temp = "";
             for (int i = 0; i < numberOfLiberalArts; i++) {
                 temp += ",?";
             }
             temp = temp.replaceFirst(",", "");
-            temp += ")";
+            temp += "))";
             sql = sql + temp;
 
             String sql2 =
-                    //"AND not time like '%금%'" +
-                    //"AND not time like '%목%'"+
-                    "AND TITLE NOT LIKE '%Practi%'" +
-                    "AND SEMESTER=20 " +
-                    "AND IFNULL(TIME,'')<>'' " +
-                    "AND TITLE NOT LIKE '%(외국인%'";
+                    "AND (TITLE NOT LIKE '%Practic%') " +
+                    "AND (TITLE NOT LIKE '%진로세미나%'))";
+            sql2+=additional_query;
 
             PreparedStatement pst = connection.prepareStatement(sql + sql2);
 
@@ -108,16 +113,13 @@ class lecturealgo {
             String cd_sql = "SELECT title,time,credit,IFNULL(cor_cd,'777') cor_cd " +
                     "FROM COURSE " +
                     "WHERE " +
-                    "COR_CD IN ('010','011'," +
-                    "'012','101','102','103','104'," +
+                    "COR_CD IN ('101','102','103','104'," +
                     "'105','106','107','108','109'," +
                     "'110','111','112','113','114'," +
                     "'115','116','117','118','119','999') " +
-                    "AND NOT title like '%Practic%' " +// 영어를 제외해야하기때문
-                    "AND SEMESTER=20 " +
-                    "AND IFNULL(TIME,'')<>'' " +
-                    "AND NOT TITLE LIKE '%(외국인반)%'";
+                    "AND title NOT like '%Practic%' "; // 영어를 제외해야하기때문
 
+            cd_sql+=additional_query;
             rs = st.executeQuery(cd_sql);
             System.out.println(rs);
 
@@ -131,10 +133,9 @@ class lecturealgo {
             //특정과목에서도 사용가능
             String En_sql = "SELECT title,time,credit,IF(cor_cd='110','666',cor_cd) " +
                     "FROM COURSE " +
-                    "WHERE title like '%English D2%' " +//특정과목
-                    "AND SEMESTER=20 " +
-                    "AND IFNULL(TIME,'')<>'' " +
-                    "AND TITLE not LIKE '%(외국인반)%'";
+                    "WHERE title like '%English B2%' ";
+
+            En_sql+=additional_query;
 
             rs = st.executeQuery(En_sql);
             System.out.println(rs);
@@ -144,6 +145,22 @@ class lecturealgo {
                 time = time.replaceAll(" ", "");//시간에 들어가는 모든 공백 제거
                 En_lecs.add(new lecture((String) rs.getObject(1), time, (int) rs.getObject(3), (String) rs.getObject(4)));
             }
+            //특정과목
+            /*String User_sql = "SELECT title,time,credit,cor_cd " +
+                    "FROM COURSE " +
+                    "WHERE title like '%한국사%' " +
+                    "AND TIME like '%목1%'" +
+                    "AND SEMESTER=20 ";
+            User_sql+=additional_query;
+
+            rs = st.executeQuery(User_sql);
+            System.out.println(rs);
+
+            while (rs.next()) {
+                String time = (String) rs.getObject(2);
+                time = time.replaceAll(" ", "");//시간에 들어가는 모든 공백 제거
+                User_lecs.add(new lecture((String) rs.getObject(1), time, (int) rs.getObject(3), (String) rs.getObject(4)));
+            }*/
 
             rs.close();
             st.close();
@@ -186,6 +203,7 @@ class lecturealgo {
                         if (LiberalArtCodes[i].equals("777")) {
                             if (major_count == 0) {
                                 major_count += 1;
+                                //전공이 많이들어가면 count가 계속 누적되어 의미가 없어짐
                             } else {
                                 continue;
                             }
@@ -195,7 +213,8 @@ class lecturealgo {
                 }
 
             }
-            if (result_count < LiberalArtCodes.length) {
+            //각 flecs가 사용자가 원하는 교양 코드를 가지고있는지 검증
+            if (result_count < LiberalArtCodes.length) {// 1학년은 전공이 없는 경우가있음..
                 iter.remove();
             }
         }
@@ -263,22 +282,38 @@ class lecturealgo {
 
             f_lecs.clear();
             //비교를 위한 첫번째 아이템 추가
-            f_lecs.add(lecs.get(0));
-            f_lecs.add(En_lecs.get(0));
-            total_leccredit += f_lecs.get(0).lec_credit;
-            total_leccredit += f_lecs.get(1).lec_credit;
+            for (lecture Userlec:User_lecs){
+                if (compare(Userlec.lectime.split(","),Userlec.lecname,Userlec.lec_cd,f_lecs)){
+                    f_lecs.add(Userlec);
+                }
+            }
+
+            for (lecture Enlec:En_lecs){
+                    if (compare(Enlec.lectime.split(","),Enlec.lecname,Enlec.lec_cd,f_lecs)) {
+                        f_lecs.add(Enlec);
+                        break;
+                    }
+
+            }
+            if (f_lecs.size()==0){
+                f_lecs.add(lecs.get(0));
+            }
+
+            for (lecture flecs:f_lecs){
+                total_leccredit += flecs.lec_credit;
+            }
+
 
             //시간표 후보군(from db) 속에서 1개의 시간표 조합 출력
-            MakeCombination(lecs, max_credits, min_credits);
-            if (combinations.size() == 0) {
+            if(!MakeCombination(lecs, max_credits, min_credits)){
                 MakeCombination(cd_lecs, max_credits, min_credits);
-
             }
         }
         return true;
     }
 
     private static boolean MakeCombination(ArrayList<lecture> lecs, int max_credits, int min_credits) {
+        boolean result=false;
         for (int i = 1; i < lecs.size(); i++) {
             //조건에 맞는 최소 학점에 도달
             if (total_leccredit < max_credits + 1) {
@@ -295,6 +330,7 @@ class lecturealgo {
 
                     //중복 검사를 패스한 시간표는 학점이 남을 수 있어서 combinations에 add
                     combinations.add((ArrayList<lecture>) f_lecs.clone());
+                    result=true;
                     if (compare(lecs.get(i).lectime.split(","), lecs.get(i).lecname, lecs.get(i).lec_cd, f_lecs)) {
                         f_lecs.add(lecs.get(i));
                         total_leccredit += lecs.get(i).lec_credit;
@@ -304,13 +340,14 @@ class lecturealgo {
                 }
             } else if (total_leccredit == max_credits) {
                 combinations.add((ArrayList<lecture>) f_lecs.clone());
+                result=true;
                 break;
             } else {
                 break;
             }
 
         }
-        return true;
+        return result;
     }
 
     //중복검사 메소드
@@ -488,6 +525,7 @@ class lecturealgo {
                             day = Character.toString(lectime[j].charAt(0));
                         } catch (StringIndexOutOfBoundsException e) {
                             System.out.println(lecname);
+                            return false;
                         }
                         if (lectime[j].equals(day + "1")) {
                             if (f_lecs.get(i).lectime.contains(lectime[j]) || f_lecs.get(i).lectime.contains(day + "A"))
